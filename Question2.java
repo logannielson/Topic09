@@ -9,32 +9,38 @@ import java.util.regex.*;
 
 public class Question2 {
 
-    public static int bfs(int[][] traps) {
+    public static int bfs(int[][] traps, int numTraps) {
         int[][] grid = new int[50][50];
         Queue<int[]> search = new LinkedList<>();
-        board[knightX][knightY] = -1;
-        search.add(new int[] {knightX,knightY});
+        search.add(new int[] {0,0});
+        int ans = -1;
+        int[][] trapGrid = new int[50][50];
+        for(int z = 0; z < numTraps; z++) {
 
-        int[] dr = {1,2,-1,2,1,-2,-1,-2}, dc = {2,1,2,-1,-2,1,-2,-1};
+        }
+
+        int[] dr = {1,0,-1,0}, dc = {0,-1,0,1};
         while(!search.isEmpty()){
             int[] curr = search.remove();
 
             int r = curr[0];
             int c = curr[1];
 
-            for(int i = 0; i < 8; i++) {
+            for(int i = 0; i < 4; i++) {
                 int nr = r + dr[i];
                 int nc = c + dc[i];
-                if((nr >= 0) && (nr < 8) && (nc >= 0) && (nc < 8) && (board[nr][nc] == 0)) {
-                    if(board[r][c] == -1) {
-                        board[nr][nc] = board[r][c] + 2;
-                    } else {
-                        board[nr][nc] = board[r][c] + 1;
+                if((nr >= 0) && (nr < 50) && (nc >= 0) && (nc < 50) && (grid[nr][nc] == 0)) {
+                    for(int j = 0; j < numTraps; j++) {
+                        if((traps[5*i][0] >= (grid[r][c] + 1) && ) {
+
+                        }
                     }
+                    grid[nr][nc] = grid[r][c] + 1;
                     search.add(new int[] {nr,nc});
                 }
             }
         }
+        return ans;
     }
 
     public static void main(String[] args) throws IOException {
@@ -54,7 +60,7 @@ public class Question2 {
             traps[i][4] = Integer.parseInt(data[4]);
         }
 
-        int ans = bfs(traps);
+        int ans = bfs(traps, numTraps);
 
         out.println(ans);
 
