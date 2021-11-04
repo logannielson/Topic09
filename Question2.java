@@ -16,7 +16,19 @@ public class Question2 {
         int ans = -1;
         int[][] trapGrid = new int[50][50];
         for(int z = 0; z < numTraps; z++) {
+            int xCord1 = traps[z][1];
+            int yCord1 = traps[z][1];
+            int xCord2 = traps[z][3];
+            int yCord2 = traps[z][3];
+            int difx = Math.abs(xCord1 - xCord2);
+            int dify = Math.abs(yCord1 - yCord2);
+            if(difx > 0) {
+                for(int m = 0; m <= difx; m++) {
 
+                }
+            } else {
+
+            }
         }
 
         int[] dr = {1,0,-1,0}, dc = {0,-1,0,1};
