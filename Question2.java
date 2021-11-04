@@ -16,18 +16,15 @@ public class Question2 {
         int ans = -1;
         int[][] trapGrid = new int[50][50];
         for(int z = 0; z < numTraps; z++) {
+            int time = traps[z][0];
             int xCord1 = traps[z][1];
             int yCord1 = traps[z][1];
             int xCord2 = traps[z][3];
             int yCord2 = traps[z][3];
-            int difx = Math.abs(xCord1 - xCord2);
-            int dify = Math.abs(yCord1 - yCord2);
-            if(difx > 0) {
-                for(int m = 0; m <= difx; m++) {
-
+            for(int i = yCord1; i <= yCord2; i++) {
+                for(int j = xCord1; j <= xCord2; j++) {
+                    trapGrid[i][j] = -1*time;
                 }
-            } else {
-
             }
         }
 
@@ -42,15 +39,21 @@ public class Question2 {
                 int nr = r + dr[i];
                 int nc = c + dc[i];
                 if((nr >= 0) && (nr < 50) && (nc >= 0) && (nc < 50) && (grid[nr][nc] == 0)) {
-                    for(int j = 0; j < numTraps; j++) {
-                        if((traps[5*i][0] >= (grid[r][c] + 1) && ) {
-
-                        }
+                    if((trapGrid[nr][nc]) == 0) {
+                        grid[nr][nc] = grid[r][c] + 1;
+                        search.add(new int[] {nr,nc});
+                    } else if(-1*trapGrid[nr][nc] >= grid[nr][nc] + 1){
+                        grid[nr][nc] = grid[r][c] + 1;
+                        search.add(new int[] {nr,nc});
                     }
                     grid[nr][nc] = grid[r][c] + 1;
                     search.add(new int[] {nr,nc});
                 }
             }
+        }
+        ans = grid[49][49];
+        if(ans == 0) {
+            ans = -1;
         }
         return ans;
     }
